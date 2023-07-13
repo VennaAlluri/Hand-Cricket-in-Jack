@@ -1,0 +1,53 @@
+class Main{
+static int s;
+    function int rand() {
+        let s = s + 20251;
+        if (s < 0) {
+            let s = s - 32767 - 1;
+        }
+        return s;
+    }
+
+    function int randRange(int range) {
+        var int m;
+        var int r;
+        let m = 1;
+        while (m < range) {
+            let m = m * 2 + 1;
+        }
+        let r = Main.rand() & m;
+        while (r > range) {
+            let r = Main.rand() & m;
+        }
+        return r;
+    }
+   function void main(){
+   var int score,i,a,b;
+   let score = 0;
+   let a = 0;
+   let b = 0;
+   let i = 1;
+   do Output.printString("Lets Start");
+   do Output.println();
+   while(~(i=0)){
+    let a = Keyboard.readInt("Batsman : ");
+    let b = Main.randRange(10);
+    do Output.printString("Computer Choice is : ");
+    do Output.printInt(b);
+    do Output.println();
+    if(~(a-b=0)){
+     let score = score + a;
+    }
+    if(a=b){
+     let i = 0;
+    }
+   }
+   if(i=0){
+    do Output.printString("^_OOPS_^ U ARE OUT");
+    do Output.println();
+    do Output.printString("Score : ");
+    do Output.printInt(score);
+   }
+   return;
+   }
+}
